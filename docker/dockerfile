@@ -1,0 +1,8 @@
+FROM node:14.21-alpine
+WORKDIR /app/
+COPY package*.json ./
+RUN npm install -g npm@latest
+EXPOSE 3000
+COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT /docker-entrypoint.sh
